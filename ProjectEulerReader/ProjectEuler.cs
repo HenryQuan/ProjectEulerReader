@@ -52,6 +52,10 @@ namespace ProjectEulerReader
                         text += node.InnerText + "\n";
                     }
                 }
+                else
+                {
+                    curQuestion = 1;
+                }
 
                 return text;
             }
