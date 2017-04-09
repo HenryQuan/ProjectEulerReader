@@ -31,6 +31,7 @@ namespace ProjectEulerReader
 
         private void prevBtn_Click(object sender, EventArgs e)
         {
+            hideAllControl();
             ProjectEuler.curQuestion--;
             string text = ProjectEuler.getCurrentQuestion();
             if (text == "")
@@ -39,12 +40,15 @@ namespace ProjectEulerReader
             }
             else
             {
+                hideAllControl();
                 updateInformation(text);
             }
+            showAllControl();
         }
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
+            hideAllControl();
             ProjectEuler.curQuestion++;
             string text = ProjectEuler.getCurrentQuestion();
             if (text == "")
@@ -53,8 +57,29 @@ namespace ProjectEulerReader
             }
             else
             {
+                hideAllControl();
                 updateInformation(text);
             }
+            showAllControl();
+        }
+
+        private void jumpBtn_Click(object sender, EventArgs e)
+        {
+            hideAllControl();
+            InputBox box = new InputBox();
+            box.ShowDialog();
+
+            string text = ProjectEuler.getCurrentQuestion();
+            if (text == "")
+            {
+                MessageBox.Show("There is no such question.");
+            }
+            else
+            {
+               
+                updateInformation(text);
+            }
+            showAllControl();
         }
 
         private void updateInformation(string text)
@@ -72,19 +97,20 @@ namespace ProjectEulerReader
             this.Text = titleMatch.Groups[1].Value;
         }
 
-        private void jumpBtn_Click(object sender, EventArgs e)
+        private void hideAllControl()
         {
-            InputBox box = new InputBox();
-            box.ShowDialog();
-
-            string text = ProjectEuler.getCurrentQuestion();
-            if (text == "")
+            foreach (Control eachControl in Controls)
             {
-                MessageBox.Show("There is no such question.");
+                eachControl.Visible = false;
             }
-            else
+            this.Text = "Loading...";
+        }
+
+        private void showAllControl()
+        {
+            foreach (Control eachControl in Controls)
             {
-                updateInformation(text);
+                eachControl.Visible = true;
             }
         }
     }
