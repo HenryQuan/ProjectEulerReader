@@ -34,8 +34,9 @@ namespace ProjectEulerReader
                     request.CookieContainer = cookie;
                     request.AutomaticDecompression = DecompressionMethods.Deflate;
                     ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                                                           | SecurityProtocolType.Tls11
-                                                           | SecurityProtocolType.Tls12;
+                        | SecurityProtocolType.Tls11
+                        | SecurityProtocolType.Tls12
+                        | SecurityProtocolType.Ssl3;
                     WebResponse response = request.GetResponse();
 
                     var dataStream = response.GetResponseStream();
