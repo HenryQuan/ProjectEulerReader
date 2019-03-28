@@ -52,7 +52,7 @@ namespace ProjectEulerReader
                     {
                         HtmlAgilityPack.HtmlDocument question = new HtmlAgilityPack.HtmlDocument();
                         question.LoadHtml(information);
-                        foreach (HtmlNode node in question.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]"))
+                        foreach (HtmlNode node in question.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[4]"))
                         {
                             text += node.InnerText + "\n";
                         }
